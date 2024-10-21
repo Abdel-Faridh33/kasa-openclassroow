@@ -1,0 +1,38 @@
+.dropdown {
+    margin: 1rem 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    .dropdown-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background-color: #ff6060;
+      color: white;
+      cursor: pointer;
+      h3 {
+        margin: 0;
+      }
+      .dropdown-arrow {
+        transition: transform 0.3s ease;
+        &.open {
+          transform: rotate(180deg);  // Tourne la flèche quand le dropdown est ouvert
+        }
+      }
+    }
+    .dropdown-content {
+      padding: 1rem;
+      background-color: #f7f7f7;
+      ul {
+        list-style-type: none;
+        padding: 0;
+        li {
+          margin-bottom: 0.5rem;
+        }
+      }
+      p {
+        margin: 0;
+      }
+    }
+  }
+  

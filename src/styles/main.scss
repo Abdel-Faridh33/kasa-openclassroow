@@ -1,0 +1,81 @@
+@import './components/header';
+@import './components/footer';
+@import './components/card';
+@import './components/detail';
+@import './components/dropdown';
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: white;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin: 2rem 0;
+    color: white;
+  }
+  
+  .App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  main {
+    flex-grow: 1;
+    padding-inline: 5%;
+  }
+
+  section.hero {
+    background-image: url('../assets/background.png');
+    background-color: black;
+    background-size: cover;
+    background-position: center;
+    border-radius: 25px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  section.about_hero{
+    background-image: url('../assets/image_source_2.png');
+  }
+  
+  section.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
+    padding: 2rem;
+    border-radius: 25px;
+    background: #F6F6F6;
+    margin-block: 2rem;
+  }
+
+  section.about_info{
+    padding: 5rem;
+  }
+  
+  footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  @media (max-width : 900px){
+    section.cards {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr); 
+    }
+
+    section.about_info{
+      padding: .5rem;
+    }
+  }
