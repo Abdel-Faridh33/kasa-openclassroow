@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Dropdown from "../components/Dropdown"; // Dropdown récemment créé
 import data from "../logements";
 import active from "../assets/star-active.png";
 import inactive from "../assets/star-inactive.png";
+import arrow_left from "../assets/arrow_left.svg";
+import arrow_right from "../assets/arrow_rigth.svg";
 
 function DetailPage() {
   const { id } = useParams();
+  const [currentImage, setCurrentImage] = useState(0)
+  
   const accommodation = data.find((item) => item.id === id);
-
   if (!accommodation) {
     return <p>Logement non trouvé</p>;
   }
@@ -34,11 +37,29 @@ function DetailPage() {
     );
   };
 
+  function chaneImage(action){
+    let nombreImages = accommodation.pictures?.length
+    if (action == "left") {
+      setCurrentImage((currentImage - 1 + nombreImages) % nombreImages)
+    } else {
+      setCurrentImage((currentImage + 1 + nombreImages) % nombreImages)
+    }
+  } 
+
   return (
     <div className="detail-page">
       <main>
         <div className="cover-image">
-          <img src={accommodation.cover} alt={accommodation.title} />
+          <img src={accommodation.pictures[currentImage]} alt={accommodation.title} className="converimg" />
+          <div onClick={()=>{chaneImage("letf")}}
+            class="arrow arrow_left">
+          <img 
+            src={arrow_left}
+            alt="Icon préccédent"
+          /></div>
+          <div onClick={()=>{chaneImage("right")}} class="arrow arrow_right" >
+          <img  src={arrow_right} alt="Icon suivant" />
+        </div>
         </div>
         <div className="flex infos">
           <div className="">
@@ -62,9 +83,7 @@ function DetailPage() {
                 src={accommodation.host.picture}
               />
             </div>
-            <div className="rating">
-              {Notation(accommodation.rating)}
-            </div>
+            <div className="rating">{Notation(accommodation.rating)}</div>
           </div>
         </div>
         <div className="flex drop_container">

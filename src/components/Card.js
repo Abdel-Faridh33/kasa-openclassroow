@@ -5,7 +5,7 @@ function Card({ id, title }) {
   const navagation = useNavigate();
 
   const handleClick = () => {
-    navagation(`/${id}`);  // Redirige vers la page de détail avec l'ID
+    navagation(`/logement/${id}`);  // Redirige vers la page de détail avec l'ID
   };
   return (
     <div className="card" onClick={handleClick}>
